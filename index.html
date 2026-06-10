@@ -30,7 +30,6 @@
       position: relative;
     }
 
-    /* Petals */
     .petal {
       position: fixed;
       pointer-events: none;
@@ -44,22 +43,21 @@
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Card */
     .card {
       background: var(--white);
       border-radius: 24px;
-      padding: 3rem 2.5rem 2.5rem;
+      padding: 2.5rem 2rem 2rem;
       max-width: 440px;
       width: calc(100% - 2rem);
       text-align: center;
       position: relative;
       z-index: 10;
-      box-shadow: 0 8px 48px rgba(232, 68, 90, 0.10), 0 1px 4px rgba(0,0,0,0.06);
+      box-shadow: 0 8px 48px rgba(232,68,90,0.10), 0 1px 4px rgba(0,0,0,0.06);
     }
 
     .card-icon {
-      font-size: 3.2rem;
-      margin-bottom: 1.2rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
       display: block;
       animation: pulse 2s ease-in-out infinite;
     }
@@ -74,27 +72,25 @@
       font-size: 13px;
       color: var(--rose);
       letter-spacing: 0.08em;
-      margin-bottom: 0.6rem;
-      text-transform: lowercase;
+      margin-bottom: 0.5rem;
     }
 
     .question {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
       color: var(--text);
       line-height: 1.35;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
     .subtitle {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
       line-height: 1.6;
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.8rem;
     }
 
-    /* YES button */
     .btn-yes {
       display: block;
       width: 100%;
@@ -102,19 +98,17 @@
       color: var(--white);
       border: none;
       border-radius: 14px;
-      padding: 16px;
+      padding: 15px;
       font-family: 'Inter', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-      letter-spacing: 0.02em;
       transition: background 0.18s, transform 0.12s;
       margin-bottom: 1rem;
     }
     .btn-yes:hover { background: var(--rose-dark); transform: scale(1.03); }
     .btn-yes:active { transform: scale(0.98); }
 
-    /* NO button container */
     .no-wrap {
       position: relative;
       height: 52px;
@@ -132,7 +126,6 @@
       font-size: 14px;
       cursor: pointer;
       white-space: nowrap;
-      transition: transform 0.08s;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -141,19 +134,81 @@
     .try-msg {
       font-size: 12px;
       color: #c0a0a8;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
       min-height: 18px;
     }
 
-    /* SUCCESS */
-    .success-screen {
-      display: none;
-      flex-direction: column;
-      align-items: center;
+    /* SCREEN HIDE/SHOW */
+    .screen { display: none; flex-direction: column; align-items: center; width: 100%; }
+    .screen.active { display: flex; }
+
+    /* DATE PICKER SCREEN */
+    .date-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .date-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      line-height: 1.6;
     }
 
+    .date-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 1.4rem;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      text-align: left;
+    }
+    .field-group label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .field-group input {
+      border: 1px solid #e8d8dc;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      width: 100%;
+    }
+    .field-group input:focus { border-color: var(--rose); }
+
+    .btn-confirm {
+      display: block;
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.12s;
+    }
+    .btn-confirm:hover { background: var(--rose-dark); transform: scale(1.02); }
+
+    /* FINAL SCREEN */
     .confetti-emoji {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       animation: bounce 0.6s ease infinite alternate;
     }
     @keyframes bounce {
@@ -161,23 +216,41 @@
       to   { transform: translateY(-10px); }
     }
 
-    .success-title {
+    .final-title {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 600;
       color: var(--text);
-      margin: 1rem 0 0.5rem;
+      margin: 0.9rem 0 0.4rem;
       line-height: 1.3;
     }
 
-    .success-sub {
+    .date-confirmed-box {
+      background: #fff5f7;
+      border: 1px solid #f5cdd5;
+      border-radius: 14px;
+      padding: 14px 20px;
+      margin: 0.8rem 0 1.4rem;
+      width: 100%;
+    }
+    .date-confirmed-box p {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.8rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .date-confirmed-box span {
+      color: var(--rose);
+      font-weight: 500;
     }
 
-    .reel-btn {
+    .final-sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+
+    .insta-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -188,52 +261,108 @@
       font-size: 14px;
       font-weight: 500;
       color: #fff;
-      background: linear-gradient(135deg, #f9a825 0%, #e64a19 40%, #d81b60 70%, #8e24aa 100%);
+      background: linear-gradient(135deg, #f9a825 0%, #e64a19 35%, #d81b60 65%, #8e24aa 100%);
       transition: opacity 0.18s, transform 0.12s;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 10px;
     }
-    .reel-btn:hover { opacity: 0.88; transform: scale(1.03); }
+    .insta-btn:hover { opacity: 0.88; transform: scale(1.02); }
 
-    .reel-btn svg { flex-shrink: 0; }
+    .hi-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--rose);
+      border: 1px solid #f5cdd5;
+      background: #fff;
+      transition: background 0.15s, transform 0.12s;
+      width: 100%;
+      justify-content: center;
+    }
+    .hi-btn:hover { background: #fff5f7; transform: scale(1.02); }
   </style>
 </head>
 <body>
 
-<div class="card" id="proposalCard">
+<!-- SCREEN 1: Proposal -->
+<div class="card" id="s1">
   <span class="card-icon">💌</span>
   <p class="from-name">a message from suraj</p>
-  <h1 class="question">Will you be my girlfriend?&nbsp;🌹</h1>
+  <h1 class="question">Will you go on a date with me? 🌹</h1>
   <p class="subtitle">You make every ordinary moment feel like something out of a movie. So… what do you say?</p>
 
-  <button class="btn-yes" onclick="sayYes()">Yes, of course! 💕</button>
+  <button class="btn-yes" onclick="goToDate()">Yes, I'd love to! 💕</button>
 
   <div class="no-wrap">
     <button class="btn-no" id="noBtn" onclick="runAway()">No 🙈</button>
   </div>
-
   <p class="try-msg" id="tryMsg"></p>
 </div>
 
-<div class="card success-screen" id="successCard">
+<!-- SCREEN 2: Pick date & time -->
+<div class="card screen" id="s2">
+  <span class="card-icon">📅</span>
+  <p class="from-name">almost there…</p>
+  <h2 class="date-label">Pick our date! 🥂</h2>
+  <p class="date-sub">When works best for you? I'll make it a day to remember.</p>
+
+  <div class="date-fields">
+    <div class="field-group" style="grid-column: 1 / -1;">
+      <label>Date</label>
+      <input type="date" id="pickDate" />
+    </div>
+    <div class="field-group" style="grid-column: 1 / -1;">
+      <label>Time</label>
+      <input type="time" id="pickTime" />
+    </div>
+  </div>
+
+  <button class="btn-confirm" onclick="confirmDate()">Confirm our date 💖</button>
+  <p class="try-msg" id="dateErr"></p>
+</div>
+
+<!-- SCREEN 3: Final -->
+<div class="card screen" id="s3">
   <span class="confetti-emoji">🎉</span>
-  <h1 class="success-title">She said YES! 🥰</h1>
-  <p class="success-sub">Suraj, you did it!<br>This is just the beginning of something beautiful. 💖</p>
-  <a class="reel-btn" href="https://www.instagram.com/reels/" target="_blank" rel="noopener">
+  <h2 class="final-title">It's a date! 🥰</h2>
+
+  <div class="date-confirmed-box">
+    <p>📅 <span id="showDate">—</span></p>
+    <p>⏰ <span id="showTime">—</span></p>
+  </div>
+
+  <p class="final-sub">
+    Can't wait! Now follow me on Instagram<br>so I can DM you the details. 😊
+  </p>
+
+  <a class="insta-btn" href="https://www.instagram.com/suraj/" target="_blank" rel="noopener" id="igFollow">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
     </svg>
-    Watch our special reel
+    Follow @suraj on Instagram
+  </a>
+
+  <a class="hi-btn" href="https://ig.me/m/suraj" target="_blank" rel="noopener" id="igDM">
+    💬 Say hi to Suraj
   </a>
 </div>
 
 <script>
   // Floating petals
-  const petals = ['🌸','🌺','🌷','💗','✨','💖'];
+  const petalEmojis = ['🌸','🌺','🌷','💗','✨','💖'];
   for (let i = 0; i < 20; i++) {
     const p = document.createElement('div');
     p.className = 'petal';
-    p.textContent = petals[Math.floor(Math.random() * petals.length)];
+    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
     p.style.left = Math.random() * 100 + 'vw';
     p.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
     p.style.animationDuration = (6 + Math.random() * 8) + 's';
@@ -256,23 +385,48 @@
 
   function runAway() {
     noCount++;
-    const card = document.getElementById('proposalCard');
+    const card = document.getElementById('s1');
     const cardW = card.offsetWidth - 56;
-    const cardH = 52;
     const btnW = noBtn.offsetWidth;
-    const btnH = noBtn.offsetHeight;
     const x = Math.random() * (cardW - btnW);
-    const y = Math.random() * (cardH - btnH);
+    const y = Math.random() * 20;
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
     noBtn.style.transform = 'none';
     tryMsg.textContent = msgs[Math.min(noCount - 1, msgs.length - 1)];
   }
 
-  function sayYes() {
-    document.getElementById('proposalCard').style.display = 'none';
-    const s = document.getElementById('successCard');
-    s.style.display = 'flex';
+  function goToDate() {
+    document.getElementById('s1').style.display = 'none';
+    const s2 = document.getElementById('s2');
+    s2.classList.add('active');
+    // Set min date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('pickDate').min = today;
+  }
+
+  function confirmDate() {
+    const d = document.getElementById('pickDate').value;
+    const t = document.getElementById('pickTime').value;
+    const err = document.getElementById('dateErr');
+    if (!d || !t) {
+      err.textContent = 'Please pick both a date and time 😊';
+      return;
+    }
+    err.textContent = '';
+
+    // Format date nicely
+    const dateObj = new Date(d + 'T' + t);
+    const dateStr = dateObj.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const timeStr = dateObj.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+    document.getElementById('showDate').textContent = dateStr;
+    document.getElementById('showTime').textContent = timeStr;
+
+    document.getElementById('s2').classList.remove('active');
+    document.getElementById('s2').style.display = 'none';
+    const s3 = document.getElementById('s3');
+    s3.classList.add('active');
     spawnCelebration();
   }
 
